@@ -1,13 +1,13 @@
 <?php
 	header('content-type: text/html; charset=utf-8');
-	// µ¥ÀÌÅÍº£ÀÌ½º Á¢¼Ó ¹®ÀÚ¿­. (dbÀ§Ä¡, À¯ÀúÀÌ¸§, ºñ¹Ð¹øÈ£)
+	// ë°ì´í„°ë² ì´ìŠ¤ ì ‘ì† ë¬¸ìžì—´. (dbìœ„ì¹˜, ìœ ì €ì´ë¦„, ë¹„ë°€ë²ˆí˜¸)
 	$host = "localhost";
 	$user = "akaishuichi";
 	$passwd = "triples501!";
 	$db = "akaishuichi";
 	$con=new mysqli($host, $user, $passwd, $db);
 	mysqli_query($con, 'SET NAMES utf8');
-	$statement = mysqli_query($con, "select * from barcodeInfo");
+	$statement = mysqli_query($con, "select * from barcodeInfo order by userTime");
 	$response = array();
 	while($row=mysqli_fetch_array($statement)) {
 		array_push($response,array("userID"=>$row[0],"userBarcode"=>$row[1],"userTime"=>$row[2]));
